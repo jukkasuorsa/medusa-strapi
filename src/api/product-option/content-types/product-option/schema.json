@@ -8,10 +8,7 @@
     "description": ""
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "versions": {

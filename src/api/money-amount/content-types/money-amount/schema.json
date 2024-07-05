@@ -39,7 +39,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-variant.product-variant",
-      "mappedBy": "money-amount"
+      "mappedBy": "money_amount"
     }
   }
 }

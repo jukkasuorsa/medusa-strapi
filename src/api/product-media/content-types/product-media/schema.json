@@ -8,14 +8,14 @@
     "description": "To store product related multimedia files"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "versions": {
       "versioned": true
+    },
+    "i18n": {
+      "localized": true
     }
   },
   "attributes": {
@@ -25,18 +25,39 @@
     },
     "filename": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "files": {
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "media_url": {
       "type": "text",
-      "multiple": true
+      "multiple": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "metadata": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "product": {
       "type": "relation",

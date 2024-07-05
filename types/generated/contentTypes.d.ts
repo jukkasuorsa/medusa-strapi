@@ -1118,10 +1118,7 @@ export interface ApiProductCategoryProductCategory
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
@@ -1132,7 +1129,12 @@ export interface ApiProductCategoryProductCategory
     medusa_id: Attribute.UID;
     name: Attribute.String & Attribute.Required;
     handle: Attribute.String;
-    metadata: Attribute.JSON;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Attribute.Relation<
       'api::product-category.product-category',
       'manyToMany',
@@ -1166,10 +1168,7 @@ export interface ApiProductCollectionProductCollection
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
@@ -1214,21 +1213,37 @@ export interface ApiProductDocumentProductDocument
     description: 'Used to store product related Document files';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    filename: Attribute.String & Attribute.Required;
-    files: Attribute.Media;
-    metadata: Attribute.JSON;
+    filename: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    files: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product: Attribute.Relation<
       'api::product-document.product-document',
       'manyToOne',
@@ -1249,6 +1264,12 @@ export interface ApiProductDocumentProductDocument
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-document.product-document',
+      'oneToMany',
+      'api::product-document.product-document'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1314,22 +1335,43 @@ export interface ApiProductMediaProductMedia extends Schema.CollectionType {
     description: 'To store product related multimedia files';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID & Attribute.Required;
-    filename: Attribute.String & Attribute.Required;
-    files: Attribute.Media;
-    media_url: Attribute.Text;
-    metadata: Attribute.JSON;
+    filename: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    files: Attribute.Media<undefined, true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media_url: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product: Attribute.Relation<
       'api::product-media.product-media',
       'manyToOne',
@@ -1350,6 +1392,12 @@ export interface ApiProductMediaProductMedia extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-media.product-media',
+      'oneToMany',
+      'api::product-media.product-media'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1363,20 +1411,30 @@ export interface ApiProductMetafieldProductMetafield
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    value: Attribute.JSON;
-    metadata: Attribute.JSON;
+    value: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product: Attribute.Relation<
       'api::product-metafield.product-metafield',
       'oneToOne',
@@ -1397,6 +1455,12 @@ export interface ApiProductMetafieldProductMetafield
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-metafield.product-metafield',
+      'oneToMany',
+      'api::product-metafield.product-metafield'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1409,10 +1473,7 @@ export interface ApiProductOptionProductOption extends Schema.CollectionType {
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
@@ -1461,10 +1522,7 @@ export interface ApiProductOptionValueProductOptionValue
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
@@ -1512,10 +1570,7 @@ export interface ApiProductTagProductTag extends Schema.CollectionType {
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
@@ -1558,20 +1613,30 @@ export interface ApiProductTypeProductType extends Schema.CollectionType {
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    value: Attribute.String;
-    metadata: Attribute.JSON;
+    value: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Attribute.Relation<
       'api::product-type.product-type',
       'oneToMany',
@@ -1592,6 +1657,12 @@ export interface ApiProductTypeProductType extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-type.product-type',
+      'oneToMany',
+      'api::product-type.product-type'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1604,42 +1675,114 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
     description: '';
   };
   options: {
-    increments: true;
-    timestamps: true;
     draftAndPublish: true;
-    comment: '';
   };
   pluginOptions: {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    title: Attribute.String & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     sku: Attribute.UID;
     barcode: Attribute.UID;
     ean: Attribute.UID;
     upc: Attribute.UID;
     variant_rank: Attribute.Integer &
       Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<0>;
-    inventory_quantity: Attribute.Integer & Attribute.Required;
+    inventory_quantity: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     allow_backorder: Attribute.Boolean &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<false>;
     manage_inventory: Attribute.Boolean &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<true>;
-    hs_code: Attribute.String;
-    origin_country: Attribute.String;
-    mid_code: Attribute.String;
-    material: Attribute.String;
-    weight: Attribute.Decimal;
-    height: Attribute.Decimal;
-    width: Attribute.Decimal;
-    product_variant_length: Attribute.Decimal;
-    metadata: Attribute.JSON;
+    hs_code: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    origin_country: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mid_code: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    material: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    weight: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    height: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    width: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    product_variant_length: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product: Attribute.Relation<
       'api::product-variant.product-variant',
       'manyToOne',
@@ -1670,6 +1813,12 @@ export interface ApiProductVariantProductVariant extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-variant.product-variant',
+      'oneToMany',
+      'api::product-variant.product-variant'
+    >;
+    locale: Attribute.String;
   };
 }
 

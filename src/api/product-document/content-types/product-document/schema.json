@@ -8,14 +8,14 @@
     "description": "Used to store product related Document files"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "versions": {
       "versioned": true
+    },
+    "i18n": {
+      "localized": true
     }
   },
   "attributes": {
@@ -24,13 +24,30 @@
     },
     "filename": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "files": {
-      "type": "media"
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "metadata": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "product": {
       "type": "relation",

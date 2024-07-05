@@ -8,10 +8,7 @@
     "description": ""
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "versions": {
@@ -31,7 +28,12 @@
       "required": false
     },
     "metadata": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "products": {
       "type": "relation",

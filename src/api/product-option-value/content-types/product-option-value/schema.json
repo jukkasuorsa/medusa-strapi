@@ -8,10 +8,7 @@
     "description": ""
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "draftAndPublish": true,
-    "comment": ""
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "versions": {
@@ -32,13 +29,13 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-variant.product-variant",
-      "mappedBy": "product-option-value"
+      "mappedBy": "product_option_value"
     },
     "product_option": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-option.product-option",
-      "mappedBy": "product-option-values"
+      "mappedBy": "product_option_values"
     }
   }
 }
