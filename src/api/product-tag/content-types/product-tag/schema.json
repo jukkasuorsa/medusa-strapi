@@ -13,6 +13,9 @@
   "pluginOptions": {
     "versions": {
       "versioned": true
+    },
+    "i18n": {
+      "localized": true
     }
   },
   "attributes": {
@@ -21,10 +24,20 @@
     },
     "value": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "metadata": {
-      "type": "json"
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "products": {
       "type": "relation",

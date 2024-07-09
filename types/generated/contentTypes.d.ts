@@ -1124,11 +1124,25 @@ export interface ApiProductCategoryProductCategory
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    name: Attribute.String & Attribute.Required;
-    handle: Attribute.String;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    handle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     metadata: Attribute.JSON &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1155,6 +1169,12 @@ export interface ApiProductCategoryProductCategory
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-category.product-category',
+      'oneToMany',
+      'api::product-category.product-category'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1174,12 +1194,31 @@ export interface ApiProductCollectionProductCollection
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    title: Attribute.String & Attribute.Required;
-    handle: Attribute.String;
-    metadata: Attribute.JSON;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    handle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Attribute.Relation<
       'api::product-collection.product-collection',
       'oneToMany',
@@ -1200,6 +1239,12 @@ export interface ApiProductCollectionProductCollection
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-collection.product-collection',
+      'oneToMany',
+      'api::product-collection.product-collection'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1479,11 +1524,25 @@ export interface ApiProductOptionProductOption extends Schema.CollectionType {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    title: Attribute.String & Attribute.Required;
-    metadata: Attribute.JSON;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product_option_values: Attribute.Relation<
       'api::product-option.product-option',
       'manyToOne',
@@ -1509,6 +1568,12 @@ export interface ApiProductOptionProductOption extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-option.product-option',
+      'oneToMany',
+      'api::product-option.product-option'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1528,11 +1593,24 @@ export interface ApiProductOptionValueProductOptionValue
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    value: Attribute.String;
-    metadata: Attribute.JSON;
+    value: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     product_variants: Attribute.Relation<
       'api::product-option-value.product-option-value',
       'oneToMany',
@@ -1558,6 +1636,12 @@ export interface ApiProductOptionValueProductOptionValue
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-option-value.product-option-value',
+      'oneToMany',
+      'api::product-option-value.product-option-value'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1576,11 +1660,25 @@ export interface ApiProductTagProductTag extends Schema.CollectionType {
     versions: {
       versioned: true;
     };
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     medusa_id: Attribute.UID;
-    value: Attribute.String & Attribute.Required;
-    metadata: Attribute.JSON;
+    value: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    metadata: Attribute.JSON &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     products: Attribute.Relation<
       'api::product-tag.product-tag',
       'manyToMany',
@@ -1601,6 +1699,12 @@ export interface ApiProductTagProductTag extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product-tag.product-tag',
+      'oneToMany',
+      'api::product-tag.product-tag'
+    >;
+    locale: Attribute.String;
   };
 }
 
